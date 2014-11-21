@@ -1,10 +1,14 @@
-package ir.yekmasir.main;
+package ir.yekmasir;
 
+import ir.yekmasir.config.Config;
+import ir.yekmasir.model.User;
+import ir.yekmasir.repositories.UserRepository;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 
 /**
  * Created with IntelliJ IDEA.
@@ -15,14 +19,10 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 @EnableAutoConfiguration
-@ComponentScan
+@ComponentScan("ir.yekmasir")
+@Import(value = Config.class)
 public class Application {
     public static void main(String[] args) {
         ConfigurableApplicationContext context = SpringApplication.run(Application.class, args);
-        String[] definitionNames = context.getBeanDefinitionNames();
-
-        for(String name : definitionNames){
-            System.out.println(name);
-        }
     }
 }
