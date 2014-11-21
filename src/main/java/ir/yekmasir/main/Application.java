@@ -19,10 +19,10 @@ import org.springframework.context.annotation.Configuration;
 public class Application {
     public static void main(String[] args) {
         ConfigurableApplicationContext context = SpringApplication.run(Application.class, args);
-//        String[] definitionNames = context.getBeanDefinitionNames();
-//
-//        for(String name : definitionNames){
-//            System.out.println(name);
-//        }
+        String[] definitionNames = context.getBeanDefinitionNames();
+
+        for(String name : definitionNames){
+            System.out.println(name);
+        }
     }
 }
