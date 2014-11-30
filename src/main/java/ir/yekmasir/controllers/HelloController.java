@@ -20,6 +20,6 @@ public class HelloController {
         user.setName("Ali");
         user.setFamily("Allavi");
         userRepository.save(user);
-		return userRepository.findOne(5).getFamily();
+		return userRepository.findOne(1).getFamily();
 	}
 }
