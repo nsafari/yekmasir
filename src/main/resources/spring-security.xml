@@ -7,20 +7,20 @@
       http://www.springframework.org/schema/security/spring-security-3.2.xsd">
 
 
-    <security:http  pattern="/assets/**, /pages/index.html, /favicon.ico" security="none" />
+    <security:http  pattern="/index.html, /favicon.ico, /app/**" security="none" />
 
     <security:http auto-config="true" use-expressions="true">
 
-        <security:intercept-url pattern="/pages/search.html"
+        <security:intercept-url pattern="/app/views/search.html"
                                 access="isAuthenticated()" />
 
-        <security:intercept-url pattern="/pages/login.html"
+        <security:intercept-url pattern="/app/views/login.html"
                                 access="isAnonymous()" />
 
 
 
-        <security:form-login login-page="/pages/login.html"
-                             authentication-failure-url="/login?error=true" />
+        <security:form-login login-page="/app/views/login.html"
+                             authentication-failure-url="/app/views/login.html?error=true" />
 
         <security:logout invalidate-session="true" />
 
