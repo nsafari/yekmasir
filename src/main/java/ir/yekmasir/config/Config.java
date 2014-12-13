@@ -41,7 +41,6 @@ public class Config {
     }
 
     @Bean
-    @Scope(value="request", proxyMode = ScopedProxyMode.INTERFACES)
     public SignupConfirmService signupConfirmService()
     {
         return new SignupConfirmEmail();
