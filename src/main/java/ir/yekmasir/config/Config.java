@@ -22,7 +22,7 @@ import java.sql.SQLException;
 public class Config {
     @Bean(name="DataSource")
     public DataSource dataSource() throws SQLException {
-        SimpleDriverDataSource dataSource = new SimpleDriverDataSource(new Driver(), "jdbc:mysql://127.0.0.1:3306/carpooling", "root", "1234");
+        SimpleDriverDataSource dataSource = new SimpleDriverDataSource(new Driver(), "jdbc:mysql://127.0.0.1:3306/carpooling", "root", "ForJavad");
         return dataSource;
     }
 }

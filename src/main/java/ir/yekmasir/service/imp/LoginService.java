@@ -1,9 +1,8 @@
-package ir.yekmasir.service;
+package ir.yekmasir.service.imp;
 
 import ir.yekmasir.model.User;
 import ir.yekmasir.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -25,9 +24,7 @@ public class LoginService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
-        User user = userRepository.findByUserName(userName);
-        if(user == null)
-            return null;
-        return new org.springframework.security.core.userdetails.User(user.getUserName(), user.getPassword(), Arrays.asList(new SimpleGrantedAuthority("USER")));
+        User user = userRepository.findByUsername(userName);
+        return user;
     }
 }

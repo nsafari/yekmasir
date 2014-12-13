@@ -1,6 +1,14 @@
 package ir.yekmasir.model;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
 import javax.persistence.*;
+import java.io.Serializable;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Date;
 
 /**
  * Created with IntelliJ IDEA.
@@ -10,15 +18,21 @@ import javax.persistence.*;
  * To change this template use File | Settings | File Templates.
  */
 @Entity
-public class User
+public class User implements Serializable, UserDetails
 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int Id;
     private String Name;
     private String Family;
-    private String userName;
+    private String username;
     private String password;
+    private Boolean VerificationEmailSent;
+    private Boolean isConfirmed;
+    private Boolean isActive;
+    private String emailConfirmToken;
+    private Date signupDate;
+    private Date confirmDate;
 
     public int getId() {
         return Id;
@@ -44,19 +58,95 @@ public class User
         Family = family;
     }
 
-    public String getUserName() {
-        return userName;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    @Override
+    public String getUsername() {
+        return username;
     }
 
-    public String getPassword() {
-        return password;
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return Arrays.asList(new SimpleGrantedAuthority("USER"));
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
     }
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    @Override
+    public String getPassword() {
+        return password;
+    }
+
+
+    public Boolean getVerificationEmailSent() {
+        return VerificationEmailSent;
+    }
+
+    public void setVerificationEmailSent(Boolean verificationEmailSent) {
+        VerificationEmailSent = verificationEmailSent;
+    }
+
+    public Boolean getConfirmed() {
+        return isConfirmed;
+    }
+
+    public void setConfirmed(Boolean confirmed) {
+        isConfirmed = confirmed;
+    }
+
+    public Boolean getActive() {
+        return isActive;
+    }
+
+    public void setActive(Boolean active) {
+        isActive = active;
+    }
+
+    public String getEmailConfirmToken() {
+        return emailConfirmToken;
+    }
+
+    public void setEmailConfirmToken(String emailConfirmToken) {
+        this.emailConfirmToken = emailConfirmToken;
+    }
+
+    public Date getSignupDate() {
+        return signupDate;
+    }
+
+    public void setSignupDate(Date signupDate) {
+        this.signupDate = signupDate;
+    }
+
+    public Date getConfirmDate() {
+        return confirmDate;
+    }
+
+    public void setConfirmDate(Date confirmDate) {
+        this.confirmDate = confirmDate;
     }
 }

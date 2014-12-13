@@ -25,13 +25,13 @@ public class MvcConfig extends WebMvcConfigurerAdapter{
         registry.addViewController("/login").setViewName("login");
     }
 
-//    @Bean
-//    public UrlBasedViewResolver viewResolver() {
-//        UrlBasedViewResolver viewResolver = new UrlBasedViewResolver();
-//        viewResolver.setViewClass(org.springframework.web.servlet.view.JstlView.class);
-//        viewResolver.setPrefix("WEB-INF/");
-//        viewResolver.setSuffix(".html");
-//        return viewResolver;
-//    }
+    @Bean
+    public UrlBasedViewResolver viewResolver() {
+        UrlBasedViewResolver viewResolver = new UrlBasedViewResolver();
+        viewResolver.setViewClass(org.springframework.web.servlet.view.JstlView.class);
+        viewResolver.setPrefix("/");
+        viewResolver.setSuffix(".html");
+        return viewResolver;
+    }
 
 }

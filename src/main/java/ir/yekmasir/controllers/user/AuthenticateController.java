@@ -19,6 +19,6 @@ public class AuthenticateController {
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public void Login(User user) {
-        String username = user.getUserName();
+        String username = user.getUsername();
     }
 }

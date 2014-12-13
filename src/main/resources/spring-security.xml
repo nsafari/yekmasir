@@ -39,5 +39,5 @@
         </security:authentication-provider>
     </security:authentication-manager>
 
-    <bean id="myUserDetailsService" class="ir.yekmasir.service.LoginService"></bean>
+    <bean id="myUserDetailsService" class="ir.yekmasir.service.imp.LoginService"></bean>
 </beans>
