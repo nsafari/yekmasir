@@ -1,14 +1,11 @@
 package ir.yekmasir.service.imp;
 
 import ir.yekmasir.model.User;
-import ir.yekmasir.repositories.UserRepository;
+import ir.yekmasir.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-
-import java.util.Arrays;
 
 /**
  * Created with IntelliJ IDEA.
@@ -24,7 +21,7 @@ public class LoginService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
-        User user = userRepository.findByUsername(userName);
+        User user = userRepository.findByEmail(userName);
         return user;
     }
 }

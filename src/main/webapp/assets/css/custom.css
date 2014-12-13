@@ -1,1 +1,24 @@
 /* Add here all your css styles (customizations) */
+form .ng-invalid-required {
+   border: solid #F27E52 1px !important;
+}
+
+form .ng-valid-required {
+    border: solid #5cb85c 2px;
+}
+form .ng-valid-pattern {
+    border: solid #5cb85c 2px;
+}
+form .ng-invalid-pattern {
+   border: solid #F27E52 1px !important;
+}
+
+/* IE6-8 Specific Code */
+.shadow {
+   zoom: 1;
+   filter: progid:DXImageTransform.Microsoft.Shadow(Color=#eeeeee, Strength=5, Direction=0),
+           progid:DXImageTransform.Microsoft.Shadow(Color=#eeeeee, Strength=5, Direction=90),
+           progid:DXImageTransform.Microsoft.Shadow(Color=#eeeeee, Strength=5, Direction=180),
+           progid:DXImageTransform.Microsoft.Shadow(Color=#eeeeee, Strength=5, Direction=270);
+}
+

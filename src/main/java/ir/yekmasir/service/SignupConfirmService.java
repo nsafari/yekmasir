@@ -2,6 +2,7 @@ package ir.yekmasir.service;
 
 import ir.yekmasir.model.User;
 import ir.yekmasir.service.imp.WebAppContext;
+import org.apache.commons.mail.EmailException;
 
 /**
  * Created with IntelliJ IDEA.
@@ -10,9 +11,9 @@ import ir.yekmasir.service.imp.WebAppContext;
  * Time: 7:43 AM
  * To change this template use File | Settings | File Templates.
  */
-public interface SingupConfirmService {
+public interface SignupConfirmService {
 
     User doConfirm(User user);
 
-    User startConfirm(User user, WebAppContext context);
+    User startConfirm(User user) throws EmailException;
 }

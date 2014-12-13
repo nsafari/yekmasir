@@ -1,5 +1,6 @@
 package ir.yekmasir.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -23,16 +24,17 @@ public class User implements Serializable, UserDetails
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int Id;
-    private String Name;
-    private String Family;
-    private String username;
+    private String name;
+    private String family;
+    private String email;
     private String password;
     private Boolean VerificationEmailSent;
     private Boolean isConfirmed;
-    private Boolean isActive;
     private String emailConfirmToken;
     private Date signupDate;
     private Date confirmDate;
+    private boolean userEnabled;
+    private Gender gender;
 
     public int getId() {
         return Id;
@@ -43,28 +45,32 @@ public class User implements Serializable, UserDetails
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
     public void setName(String name) {
-        Name = name;
+        this.name = name;
     }
 
     public String getFamily() {
-        return Family;
+        return family;
     }
 
     public void setFamily(String family) {
-        Family = family;
+        this.family = family;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     @Override
     public String getUsername() {
-        return username;
+        return email;
     }
 
     @Override
@@ -89,7 +95,7 @@ public class User implements Serializable, UserDetails
 
     @Override
     public boolean isEnabled() {
-        return true;
+        return userEnabled;
     }
 
     public void setPassword(String password) {
@@ -97,11 +103,12 @@ public class User implements Serializable, UserDetails
     }
 
     @Override
+    @JsonIgnore
     public String getPassword() {
         return password;
     }
 
-
+    @JsonIgnore
     public Boolean getVerificationEmailSent() {
         return VerificationEmailSent;
     }
@@ -110,6 +117,7 @@ public class User implements Serializable, UserDetails
         VerificationEmailSent = verificationEmailSent;
     }
 
+    @JsonIgnore
     public Boolean getConfirmed() {
         return isConfirmed;
     }
@@ -118,14 +126,7 @@ public class User implements Serializable, UserDetails
         isConfirmed = confirmed;
     }
 
-    public Boolean getActive() {
-        return isActive;
-    }
-
-    public void setActive(Boolean active) {
-        isActive = active;
-    }
-
+    @JsonIgnore
     public String getEmailConfirmToken() {
         return emailConfirmToken;
     }
@@ -134,6 +135,7 @@ public class User implements Serializable, UserDetails
         this.emailConfirmToken = emailConfirmToken;
     }
 
+    @JsonIgnore
     public Date getSignupDate() {
         return signupDate;
     }
@@ -142,11 +144,28 @@ public class User implements Serializable, UserDetails
         this.signupDate = signupDate;
     }
 
+    @JsonIgnore
     public Date getConfirmDate() {
         return confirmDate;
     }
 
     public void setConfirmDate(Date confirmDate) {
         this.confirmDate = confirmDate;
+    }
+
+    public boolean isUserEnabled() {
+        return userEnabled;
+    }
+
+    public void setUserEnabled(boolean userEnabled) {
+        this.userEnabled = userEnabled;
+    }
+
+    public Gender getGender() {
+        return gender;
+    }
+
+    public void setGender(Gender gender) {
+        this.gender = gender;
     }
 }

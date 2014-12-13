@@ -1,4 +1,4 @@
-package ir.yekmasir.controllers;
+package ir.yekmasir.controller;
 
 import org.apache.commons.mail.DefaultAuthenticator;
 import org.apache.commons.mail.Email;
@@ -27,10 +27,12 @@ public class SendEmailController {
         email.setAuthenticator(new DefaultAuthenticator("nassersafari@gmail.com", "fORyADHIS"));
         email.setSSLOnConnect(true);
         email.setFrom("user@gmail.com");
+
         email.setSubject("TestMail");
         email.setMsg("This is a test mail ... :-)");
         email.addTo("nassersafari@gmail.com");
         email.send();
         return "I'm here";
     }
+
 }

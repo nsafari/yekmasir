@@ -1,4 +1,4 @@
-package ir.yekmasir.repositories;
+package ir.yekmasir.repository;
 
 import ir.yekmasir.model.User;
 import org.springframework.data.repository.CrudRepository;
@@ -11,6 +11,7 @@ import org.springframework.data.repository.CrudRepository;
  * To change this template use File | Settings | File Templates.
  */
 public interface UserRepository extends CrudRepository<User, Integer> {
-    User findByUsername(String username);
+    User findByEmail(String email);
+    User findByEmailConfirmToken(String emailConfirmToken);
 
 }

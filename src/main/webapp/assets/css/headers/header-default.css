@@ -382,7 +382,7 @@
 
 	.header .dropdown-menu li a { 
 		color: #687074; 
-		font-size: 13px; 
+		font-size: 14px; 
 		font-weight: 400; 
 		padding: 6px 15px; 
 		border-bottom: solid 1px #eee;
@@ -452,7 +452,7 @@
 	top: 3px; 
 	left: 100%; 
 	margin-top: -5px; 
-	margin-left: 0px; 
+	margin-left: 1px; 
 }
 
 /*Submenu comes from LEFT side*/

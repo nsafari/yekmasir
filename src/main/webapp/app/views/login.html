@@ -1,0 +1,52 @@
+<div class="" data-ng-controller="loginController">
+    <div class="breadcrumbs">
+        <div class="container">
+            <h1 class="pull-left">ورود به همسفر</h1>
+            <ul class="pull-right breadcrumb">
+                <li><a href="index.html">خانه</a></li>
+                <li class="active">ورود</li>
+            </ul>
+        </div>
+    </div>
+    <div class="container content">
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3">
+                <form class="reg-page" id="loginform" name="loginform">
+                    <div class="reg-header">
+                        <h2>شناسایی عضو</h2>
+                    </div>
+                    <div class="input-group margin-bottom-20">
+                        <input type="text" placeholder="نام کاربری" required class="form-control" data-ng-model="user.email">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-user" style="font-size: 16px"></i></span>
+                    </div>
+                    <div class="input-group margin-bottom-20">
+                        <input type="password" placeholder="کلمه عبور" required class="form-control" data-ng-model="user.password">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-log-in" style="font-size: 16px"></i></span>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 checkbox">
+                            <label>
+                                <input type="checkbox">به خاطر بسپار</label>
+                        </div>
+                        <div class="col-md-2">
+                            <button class="btn-u pull-right" formnovalidate type="submit" data-ng-click="login()">
+                                ورود</button>
+                        </div>
+                        <div class="col-md-2">
+                            <a href="#/registration">
+                                <button class="btn btn-md btn-warning" type="submit" formnovalidate>
+                                    عضویت
+                                </button>
+                            </a>
+                        </div>
+                    </div>
+                    <hr>
+                    <h4>کلمه عبور خود را فراموش کرده اید؟</h4>
+                    <p>
+                        نگران نباشید, <a class="color-green" href="#">اینجا کلیک کنید</a>
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

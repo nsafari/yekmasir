@@ -1,0 +1,76 @@
+<div class="" data-ng-controller="registrationController">
+    <div class="breadcrumbs">
+        <div class="container">
+            <h1 class="pull-left">عضویت در همسفر</h1>
+            <ul class="pull-right breadcrumb">
+                <li><a href="index.html">خانه</a></li>
+                <li class="active">عضویت</li>
+            </ul>
+        </div>
+        <!--/container-->
+    </div>
+    <div class="container content">
+        <div class="row" data-ng-show="!isRegistered">
+            <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+                <form class="reg-page" id="regform" name="regform">
+                    <div class="reg-header">
+                        <h2>ثبت عضویت</h2>
+                        <p>
+                            آیا عضو هستید؟ برای ورود<a href="#/login" class="color-green"> اینجا </a>کلیک کنید
+                        </p>
+                    </div>
+                    <span>نام</span>
+                    <input type="text" class="form-control margin-bottom-10" required data-ng-model="user.name" />
+                    <label>
+                        نام خانوادگی</label>
+                    <input type="text" class="form-control margin-bottom-10" required data-ng-model="user.family" />
+                    <label>
+                        آدرس الکترونیکی </label>
+                    <input type="text" class="form-control ng-invalid margin-bottom-10" required data-ng-model="user.email" data-ng-pattern=" /^[a-z0-9!#$%&'*+/=?^_`{|}~.-]+@[a-z0-9-]+(\.[a-z0-9-]+)*$/i" />
+                    <label>
+                        کلمه عبور </label>
+                    <input type="password" class="form-control margin-bottom-10" required data-ng-model="user.password" />
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <label>
+                                جنسیت</label>
+                            <select class="form-control margin-bottom-10" required data-ng-model="user.gender">
+                                <option value="male">آقا</option>
+                                <option value="female">خانم</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-6">
+                            <label>
+                                &nbsp</label>
+                            <button class="btn-u form-control margin-bottom-10" formnovalidate
+                                type="submit" data-ng-click="register()" data-ng-disabled="regform.$invalid">
+                                ثبت عضویت</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="panel panel-grey" data-ng-show="isRegistered">
+            <div class="panel-body">
+                <h2>
+                    <i style="font-size: 18px" class="icon-custom rounded-x icon-bg-u glyphicon glyphicon-envelope"></i>&nbsp; 
+                                تایید عضویت
+                </h2>
+                <p>
+                    یک ایمیل تاییدیه به آدرس
+                                <a href="#">&nbsp
+                                    {{user.email}}
+                                    &nbsp
+                                </a>
+                    ارسال گردید. 
+                </p>
+                <p>
+                    برای فعال سازی کافی است بر روی لینک داخل ایمیل تاییدیه کلیک نمایید.
+                </p>
+                <p>
+                    در صورت عدم دریافت ایمیل تاییدیه به قسمت spam در ایمیل خود مراجعه کنید.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

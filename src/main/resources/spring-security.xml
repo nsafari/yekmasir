@@ -7,7 +7,7 @@
       http://www.springframework.org/schema/security/spring-security-3.2.xsd">
 
 
-    <security:http  pattern="/index.html, /favicon.ico, /app/**" security="none" />
+    <security:http  pattern="/index.html, /favicon.ico, /app/**, /user/**" security="none" />
 
     <security:http auto-config="true" use-expressions="true">
 
@@ -16,8 +16,6 @@
 
         <security:intercept-url pattern="/app/views/login.html"
                                 access="isAnonymous()" />
-
-
 
         <security:form-login login-page="/app/views/login.html"
                              authentication-failure-url="/app/views/login.html?error=true" />
