@@ -1,5 +1,6 @@
 package ir.yekmasir.service.imp;
 
+import ir.yekmasir.exception.UserNotActiveException;
 import ir.yekmasir.model.User;
 import ir.yekmasir.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +22,11 @@ public class LoginService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
-        User user = userRepository.findByEmail(userName);
-        return user;
+        User theUser = userRepository.findByEmail(userName);
+        if(theUser == null)
+            throw new UsernameNotFoundException(userName);
+        if(!theUser.isEnabled() || !theUser.getConfirmed())
+            throw new UserNotActiveException(userName);
+        return theUser;
     }
 }

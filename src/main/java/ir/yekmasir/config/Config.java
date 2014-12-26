@@ -3,7 +3,11 @@ package ir.yekmasir.config;
 import com.mysql.jdbc.Driver;
 import ir.yekmasir.service.SignupConfirmService;
 import ir.yekmasir.service.imp.SignupConfirmEmail;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.*;
+import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 import org.springframework.jdbc.datasource.SimpleDriverDataSource;
 
 import javax.mail.Authenticator;
@@ -24,8 +28,8 @@ import java.util.Properties;
 @Import(MvcConfig.class)
 public class Config {
     @Bean(name="DataSource")
-    public DataSource dataSource() throws SQLException {
-        SimpleDriverDataSource dataSource = new SimpleDriverDataSource(new Driver(), "jdbc:mysql://127.0.0.1:3306/carpooling", "root", "ForJavad");
+    public DataSource dataSource(@Value("${db.host}") String host, @Value("${db.name}") String dbname, @Value("${db.user}") String username, @Value("${db.pass}") String pass) throws SQLException {
+        SimpleDriverDataSource dataSource = new SimpleDriverDataSource(new Driver(), "jdbc:mysql://" + host + ":3306/" + dbname, username, pass);
         return dataSource;
     }
 
@@ -47,5 +51,19 @@ public class Config {
     public SignupConfirmService signupConfirmService()
     {
         return new SignupConfirmEmail();
+    }
+
+    @Bean
+    public static PropertySourcesPlaceholderConfigurer properties(){
+        PropertySourcesPlaceholderConfigurer pspc =
+                new PropertySourcesPlaceholderConfigurer();
+        Resource[] resources = new ClassPathResource[ ]
+                {
+                  new ClassPathResource( "application.properties" ),
+                  new ClassPathResource( "hibernate.properties")
+                };
+        pspc.setLocations( resources );
+        pspc.setIgnoreUnresolvablePlaceholders( true );
+        return pspc;
     }
 }

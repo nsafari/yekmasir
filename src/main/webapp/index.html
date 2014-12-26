@@ -2,10 +2,10 @@
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
 <!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
 <!--[if !IE]><!-->
-<html lang="en">
+<html lang="en" data-ng-app="CarpoolingApp">
 <!--<![endif]-->
 <head>
-    <title>همسفر | عضویت</title>
+    <title>همسفر | خوش آمدید</title>
     <!-- Meta -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,12 +16,8 @@
     <!-- CSS Global Compulsory -->
     <link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="assets/css/style.css">
-    <!-- CSS Implementing Plugins -->
-    <link rel="stylesheet" href="assets/plugins/line-icons/line-icons.css">
     <link rel="stylesheet" href="assets/plugins/font-awesome/css/font-awesome.min.css">
-    <!-- CSS Page Style -->
-    <link rel="stylesheet" href="assets/css/pages/page_log_reg_v1.css">
-    <!-- CSS Customization -->
+    <link rel="stylesheet" href="assets/css/pages/page_job.css">
     <link rel="stylesheet" href="assets/css/custom.css">
 </head>
 <body>
@@ -32,9 +28,9 @@
             <div class="topbar">
                 <div class="container">
                     <ul class="loginbar pull-right">
-                        <li><a href="faq.html">راهنما</a></li>
+                        <li><a href="#/faq">راهنما</a></li>
                         <li class="topbar-devider"></li>
-                        <li><a href="login.html">ورود</a></li>
+                        <li><a href="#/login">ورود</a></li>
                     </ul>
                 </div>
             </div>
@@ -52,11 +48,10 @@
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse navbar-responsive-collapse">
                         <ul class="nav navbar-nav">
-                            <li class="dropdown"><a href="index.html">خانه</a></li>
+                            <li class="dropdown"><a href="index.html">خانه </a></li>
                             <li class="dropdown mega-menu-fullwidth"><a href="javascript:void(0);" class="dropdown-toggle"
                                 data-toggle="dropdown">ثبت مسیر </a></li>
-                            <li class="dropdown"><a href="search.html">
-                                جستجو برای راننده </a></li>
+                            <li class="dropdown"><a href="#/search">جستجو برای راننده </a></li>
                         </ul>
                     </div>
                 </div>
@@ -64,69 +59,10 @@
             <!-- End Navbar -->
         </div>
         <!--=== End Header ===-->
-        <!--=== Breadcrumbs ===-->
-        <div class="breadcrumbs">
-            <div class="container">
-                <h1 class="pull-left">
-                    عضویت در همسفر</h1>
-                <ul class="pull-right breadcrumb">
-                    <li><a href="index.html">خانه</a></li>
-                    <li class="active">عضویت</li>
-                </ul>
-            </div>
-            <!--/container-->
+        <!--=== Content ===-->
+        <div data-ng-view="">
         </div>
-        <!--=== End Breadcrumbs ===-->
-        <!--=== End Breadcrumbs ===-->
-        <!--=== Content Part ===-->
-        <div class="container content">
-            <div class="row">
-                <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
-                    <form class="reg-page">
-                    <div class="reg-header">
-                        <h2>
-                            ثبت عضویت</h2>
-                        <p>
-                            آیا عضو هستید؟ برای ورود<a href="login.html" class="color-green"> اینجا </a>
-                            کلیک کنید</p>
-                    </div>
-                    <label>
-                        نام</label>
-                    <input type="text" class="form-control margin-bottom-20" />
-                    <label>
-                        نام خانوادگی</label>
-                    <input type="text" class="form-control margin-bottom-20" />
-                    <label>
-                        آدرس الکترونیکی <span class="color-red">*</span></label>
-                    <input type="text" class="form-control margin-bottom-20" />
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <label>
-                                کلمه عبور <span class="color-red">*</span></label>
-                            <input type="password" class="form-control margin-bottom-20" />
-                        </div>
-                        <div class="col-sm-6">
-                            <label>
-                                کلمه عبور مجدد <span class="color-red">*</span></label>
-                            <input type="password" class="form-control margin-bottom-20" />
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="row">
-                        <div class="col-lg-6 checkbox">
-                            
-                        </div>
-                        <div class="col-lg-6 text-right">
-                            <button class="btn-u" type="submit">
-                                ثبت عضویت</button>
-                        </div>
-                    </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-        <!--/container-->
-        <!--=== End Content Part ===-->
+        <!--=== End Content ===-->
         <!--=== Footer Version 1 ===-->
         <div class="footer-v1">
             <!--footer-->
@@ -207,7 +143,7 @@
                         <!-- End Social Links -->
                         <div class="col-md-6">
                             <p>
-                                تمامی حقوق متعلق به این سايت برای ناصر صفری نیا محفوظ می باشد
+                                تمامی حقوق متعلق به این سايت برای محفوظ می باشد
                             </p>
                         </div>
                     </div>
@@ -217,6 +153,7 @@
         </div>
         <!--=== End Footer Version 1 ===-->
     </div>
+    <!--/End Wrapepr-->
     <!-- JS Global Compulsory -->
 
     <script type="text/javascript" src="assets/plugins/jquery/jquery.min.js"></script>
@@ -229,18 +166,51 @@
 
     <script type="text/javascript" src="assets/plugins/back-to-top.js"></script>
 
+    <script type="text/javascript" src="assets/plugins/jquery.parallax.js"></script>
+
+    <script type="text/javascript" src="assets/plugins/image-hover/js/modernizr.js"></script>
+
+    <script type="text/javascript" src="assets/plugins/image-hover/js/touch.js"></script>
+
     <!-- JS Customization -->
 
     <script type="text/javascript" src="assets/js/custom.js"></script>
 
     <!-- JS Page Level -->
 
-    <script type="text/javascript" src="assets/js/app.js"></script>
+    <script type="text/javascript" src="assets/js/Unify.js"></script>
+
+    <!-- Angular -->
+
+    <script src="assets/plugins/angularjs/angular.js" type="text/javascript"></script>
+
+    <script src="assets/plugins/angularjs/angular-route.js" type="text/javascript"></script>
+
+    <script src="app/app.js" type="text/javascript"></script>
+
+    <!-- Angular Models -->
+
+    <script src="app/models/User.js" type="text/javascript"></script>
+
+    <!-- Angular Services -->
+
+    <script src="app/services/userService.js" type="text/javascript"></script>
+
+    <!-- Angular Controllers -->
+
+    <script src="app/controller/appController.js" type="text/javascript"></script>
+
+    <script src="app/controller/homeController.js" type="text/javascript"></script>
+
+    <script src="app/controller/loginController.js" type="text/javascript"></script>
+
+    <script src="app/controller/registrationController.js" type="text/javascript"></script>
 
     <script type="text/javascript">
-    jQuery(document).ready(function() {
-        App.init();
-    });
+        jQuery(document).ready(function() {
+            Unify.init();
+            Unify.initParallaxBg();
+        });
 </script>
 
     <!--[if lt IE 9]>
@@ -249,5 +219,4 @@
     <script src="assets/js/plugins/placeholder-IE-fixes.js"></script>
 <![endif]-->
 </body>
-<!-- Mirrored from htmlstream.com/preview/unify-v1.6-production/page_registration.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 26 Nov 2014 12:20:38 GMT -->
 </html>

@@ -32,6 +32,6 @@ app.config(function($routeProvider) {
 });
 
 app.constant('webAPISetting', {
-    apiServiceBaseUri: 'http://yekmasir.com/',
+    apiServiceBaseUri: 'http://localhost/',
     clientId: 'webAPISetting'
 });

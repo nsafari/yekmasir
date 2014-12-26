@@ -29,16 +29,6 @@ public class AuthenticateController {
     @Autowired
     private SignupConfirmService signupConfirmService;
 
-    @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public User Login(@RequestBody User user) throws EnityNotFoundException, UserNotActiveException {
-        final User theUser = userRepository.findByEmail(user.getEmail());
-        if(theUser == null)
-            throw new UsernameNotFoundException(user.getEmail());
-        if(!theUser.isEnabled() || !theUser.getConfirmed())
-            throw new UserNotActiveException(user.getEmail());
-        return theUser;
-    }
-
     @RequestMapping(value = "/registerUser", method = RequestMethod.POST)
     public String Signup(@RequestBody User user){
         user.setSignupDate(new Date());
