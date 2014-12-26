@@ -5,7 +5,6 @@ import ir.yekmasir.exception.UserNotActiveException;
 import ir.yekmasir.model.User;
 import ir.yekmasir.repository.UserRepository;
 import ir.yekmasir.service.SignupConfirmService;
-import org.apache.commons.mail.EmailException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.*;
@@ -41,7 +40,7 @@ public class AuthenticateController {
     }
 
     @RequestMapping(value = "/registerUser", method = RequestMethod.POST)
-    public String Signup(@RequestBody User user) throws EmailException {
+    public String Signup(@RequestBody User user){
         user.setSignupDate(new Date());
         user.setUserEnabled(false);
 

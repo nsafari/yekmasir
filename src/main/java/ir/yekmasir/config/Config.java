@@ -3,14 +3,15 @@ package ir.yekmasir.config;
 import com.mysql.jdbc.Driver;
 import ir.yekmasir.service.SignupConfirmService;
 import ir.yekmasir.service.imp.SignupConfirmEmail;
-import org.apache.commons.mail.DefaultAuthenticator;
-import org.apache.commons.mail.EmailException;
-import org.apache.commons.mail.HtmlEmail;
 import org.springframework.context.annotation.*;
 import org.springframework.jdbc.datasource.SimpleDriverDataSource;
 
+import javax.mail.Authenticator;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
 import javax.sql.DataSource;
 import java.sql.SQLException;
+import java.util.Properties;
 
 /**
  * Created with IntelliJ IDEA.
@@ -29,18 +30,26 @@ public class Config {
     }
 
     @Bean
-    @Scope("prototype")
-    public HtmlEmail htmlEmail() throws EmailException {
-        HtmlEmail email = new HtmlEmail();
-        email.setHostName("smtp.googlemail.com");
-        email.setSmtpPort(465);
-        email.setAuthenticator(new DefaultAuthenticator("username", "password"));
-        email.setSSLOnConnect(true);
-        email.setFrom("info@yekmasir.com");
-        return email;
+    public Session emailSession(){
+        String host = "yekmasir.com";
+
+        Properties props = new Properties();
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.starttls.enable", "true");
+        props.put("mail.smtp.host", host);
+        props.put("mail.smtp.port", "25");
+
+        Session session = Session.getDefaultInstance(props, new Authenticator() {
+            @Override
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication("", "");
+            }
+        });
+        return session;
     }
 
     @Bean
+    @Scope(value="request", proxyMode = ScopedProxyMode.INTERFACES)
     public SignupConfirmService signupConfirmService()
     {
         return new SignupConfirmEmail();

@@ -7,7 +7,7 @@
       http://www.springframework.org/schema/security/spring-security-3.2.xsd">
 
 
-    <security:http  pattern="/index.html, /favicon.ico, /app/**, /user/**" security="none" />
+    <security:http  pattern="/index.html, /favicon.ico, /email, /app/**, /user/**" security="none" />
 
     <security:http auto-config="true" use-expressions="true">
 

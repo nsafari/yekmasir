@@ -32,6 +32,6 @@ app.config(function($routeProvider) {
 });
 
 app.constant('webAPISetting', {
-    apiServiceBaseUri: 'http://185.10.72.167/',
+    apiServiceBaseUri: 'http://yekmasir.com/',
     clientId: 'webAPISetting'
 });

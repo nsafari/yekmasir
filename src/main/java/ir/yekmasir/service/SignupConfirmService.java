@@ -1,8 +1,6 @@
 package ir.yekmasir.service;
 
 import ir.yekmasir.model.User;
-import ir.yekmasir.service.imp.WebAppContext;
-import org.apache.commons.mail.EmailException;
 
 /**
  * Created with IntelliJ IDEA.
@@ -15,5 +13,5 @@ public interface SignupConfirmService {
 
     User doConfirm(User user);
 
-    User startConfirm(User user) throws EmailException;
+    User startConfirm(User user);
 }
