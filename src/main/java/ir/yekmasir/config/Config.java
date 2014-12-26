@@ -34,17 +34,11 @@ public class Config {
         String host = "yekmasir.com";
 
         Properties props = new Properties();
-        props.put("mail.smtp.auth", "true");
         props.put("mail.smtp.starttls.enable", "true");
         props.put("mail.smtp.host", host);
         props.put("mail.smtp.port", "25");
 
-        Session session = Session.getDefaultInstance(props, new Authenticator() {
-            @Override
-            protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication("", "");
-            }
-        });
+        Session session = Session.getDefaultInstance(props);
         return session;
     }
 
