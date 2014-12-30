@@ -21,7 +21,6 @@ import org.springframework.web.servlet.view.UrlBasedViewResolver;
  */
 @Configuration
 @Import(WebSecurityConfig.class)
-//@ImportResource({"classpath:spring-security.xml"})
 public class MvcConfig extends WebMvcConfigurerAdapter{
 
 //    @Bean
