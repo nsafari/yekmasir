@@ -1,0 +1,276 @@
+<div class="" data-ng-controller="addliftController">
+    <div class="breadcrumbs">
+        <div class="container">
+            <h1 class="pull-left">ثبت تردد در یکمسیر</h1>
+            <ul class="pull-right breadcrumb">
+                <li><a href="index.html">خانه</a></li>
+                <li class="active">ثبت تردد</li>
+            </ul>
+        </div>
+        <!--/container-->
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="block form-wizard" id="form-wizard2">
+                    <ul>
+                        <li><a href="#valid1" data-toggle="tab"><span>1</span> درخواست/پیشنهاد</a></li>
+                        <li><a href="#valid2" data-toggle="tab"><span>2</span> دوره تردد</a></li>
+                        <li><a href="#valid3" data-toggle="tab"><span>3</span> تاریخ و مسیر</a></li>
+                        <li><a href="#valid4" data-toggle="tab"><span>4</span> هزینه و پرداخت</a></li>
+                    </ul>
+                    <div class="block-content">
+                        <form action="javascript:alert('Form submited');" method="post" id="wizard-validate">
+                            <div class="tab-content">
+                                <div class="tab-pane" id="valid1" data-ng-init="lift.OfferRequest=0">
+                                    <div class="form-group">
+                                        <label class="control-label ng-binding">
+                                            <input type="radio" name="offerrequest" value="0" data-ng-model="lift.OfferRequest"
+                                                   aria-label="Radio button for following text input">&nbsp;&nbsp;<span>پیشنهاد تردد (شما یک راننده هستید)  </span>
+                                        </label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label ng-binding">
+                                            <input type="radio" name="offerrequest" value="1" data-ng-model="lift.OfferRequest"
+                                                   aria-label="Radio button for following text input">&nbsp;&nbsp;<span>درخواست تردد (شما یک مسافر هستید)  </span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="valid2" data-ng-init="lift.Frequency=0">
+                                    <div class="form-group">
+                                        <label class="control-label ng-binding">
+                                            <input type="radio" name="frequency" value="0" data-ng-model="lift.Frequency"
+                                                   aria-label="Radio button for following text input">&nbsp;&nbsp;<span>یکبار تردد</span>&nbsp;<span>(شما قصد تردد در یک تاریخ خاص برای یکبار دارید)</span>
+                                        </label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label ng-binding">
+                                            <input type="radio" name="frequency" value="1" data-ng-model="lift.Frequency"
+                                                   aria-label="Radio button for following text input">&nbsp;&nbsp;<span>تردد منظم</span>&nbsp;<span>(شما قصد تردد در یک دوره تاریخ بصورت منظم دارید)</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="valid3">
+                                    <div class="form-group">
+                                        <label class="control-label ng-binding col-md-2">
+                                            <span>تاریخ :</span>&nbsp;&nbsp;
+                                        </label>
+
+                                        <select id="OneOffDay" data-ng-model="OneOffDay">
+                                            <option value="01">01</option>
+                                            <option value="02">02</option>
+                                            <option value="03">03</option>
+                                            <option value="04">04</option>
+                                            <option value="05">05</option>
+                                            <option value="06">06</option>
+                                            <option value="07">07</option>
+                                            <option value="08">08</option>
+                                            <option value="09">09</option>
+                                            <option value="10">10</option>
+                                            <option value="11">11</option>
+                                            <option value="12">12</option>
+                                            <option value="13">13</option>
+                                            <option value="14">14</option>
+                                            <option value="15">15</option>
+                                            <option value="16">16</option>
+                                            <option value="17">17</option>
+                                            <option value="18">18</option>
+                                            <option value="19">19</option>
+                                            <option value="20">20</option>
+                                            <option value="21">21</option>
+                                            <option value="22">22</option>
+                                            <option value="23">23</option>
+                                            <option value="24">24</option>
+                                            <option value="25">25</option>
+                                            <option value="26">26</option>
+                                            <option value="27">27</option>
+                                            <option value="28">28</option>
+                                            <option value="29">29</option>
+                                            <option value="30">30</option>
+                                            <option value="31">31</option>
+                                        </select>
+
+                                        <span>/</span>
+
+                                        <select id="OneOffMonth" data-ng-model="OneOffMonth">
+                                            <option value="01">فروردین</option>
+                                            <option value="02">اردیبهشت</option>
+                                            <option value="03">خرداد</option>
+                                            <option value="04">تیر</option>
+                                            <option value="05">مرداد</option>
+                                            <option value="06">شهریور</option>
+                                            <option value="07">مهر</option>
+                                            <option value="08">آبان</option>
+                                            <option value="09">آذر</option>
+                                            <option value="10">دی</option>
+                                            <option value="11">بهمن</option>
+                                            <option value="12">اسفند</option>
+                                        </select>
+
+                                        <span>/</span>
+
+                                        <select id="OneOffYear" data-ng-model="OneOffYear">
+                                            <option value="1393">1393</option>
+                                            <option value="1394">1394</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label ng-binding col-md-2">
+                                            <span>ساعت حرکت :</span>
+                                        </label>
+                                        <select>
+                                            <option value="00">00</option>
+                                            <option value="15">15</option>
+                                            <option value="30">30</option>
+                                            <option value="45">45</option>
+                                        </select>
+                                        &nbsp;<span> : </span>&nbsp;
+                                        <select>
+                                            <option value="00">00</option>
+                                            <option value="01">01</option>
+                                            <option value="02">02</option>
+                                            <option value="03">03</option>
+                                            <option value="04">04</option>
+                                            <option value="05">05</option>
+                                            <option value="06">06</option>
+                                            <option value="07">07</option>
+                                            <option value="08">08</option>
+                                            <option value="09">09</option>
+                                            <option value="10">10</option>
+                                            <option value="11">11</option>
+                                            <option value="12 ">12</option>
+                                            <option value="13">13</option>
+                                            <option value="14">14</option>
+                                            <option value="15">15</option>
+                                            <option value="16">16</option>
+                                            <option value="17">17</option>
+                                            <option value="18">18</option>
+                                            <option value="19">19</option>
+                                            <option value="20">20</option>
+                                            <option value="21">21</option>
+                                            <option value="22">22</option>
+                                            <option value="23">23</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label ng-binding col-md-2">
+                                            <span>مبدا مسیر :</span>
+                                        </label>
+                                        <input type="text" name="Source" data-ng-model="lift.Source" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label ng-binding col-md-2">
+                                            <span>مقصد مسیر :</span>
+                                        </label>
+                                        <input type="text" name="Destination" data-ng-model="lift.Destination" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label ng-binding col-md-2">
+                                            <span>ساعت رسیدن به مقصد :</span>
+                                        </label>
+                                        <select>
+                                            <option value="00">00</option>
+                                            <option value="15">15</option>
+                                            <option value="30">30</option>
+                                            <option value="45">45</option>
+                                        </select>
+                                        &nbsp;<span> : </span>&nbsp;
+                                        <select>
+                                            <option value="00">00</option>
+                                            <option value="01">01</option>
+                                            <option value="02">02</option>
+                                            <option value="03">03</option>
+                                            <option value="04">04</option>
+                                            <option value="05">05</option>
+                                            <option value="06">06</option>
+                                            <option value="07">07</option>
+                                            <option value="08">08</option>
+                                            <option value="09">09</option>
+                                            <option value="10">10</option>
+                                            <option value="11">11</option>
+                                            <option value="12 ">12</option>
+                                            <option value="13">13</option>
+                                            <option value="14">14</option>
+                                            <option value="15">15</option>
+                                            <option value="16">16</option>
+                                            <option value="17">17</option>
+                                            <option value="18">18</option>
+                                            <option value="19">19</option>
+                                            <option value="20">20</option>
+                                            <option value="21">21</option>
+                                            <option value="22">22</option>
+                                            <option value="23">23</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label ng-binding col-md-2">
+                                            <span>تعداد جاهای موجود :</span>
+                                        </label>
+                                        <select data-ng-model="lift.Places" name="Places">
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                            <option value="6">6</option>
+                                            <option value="7">7</option>
+                                            <option value="8">8</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label ng-binding col-md-2">
+                                            <span>توضیحات :</span>
+                                        </label>
+                                        <textarea class="span6" data-ng-model="lift.Comment" rows="3"></textarea>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="valid4">
+                                    finish
+                                </div>
+                                <ul class="pager wizard">
+                                    <li class="previous"><a href="" class="btn btn-default">مرحله قبل</a></li>
+                                    <li class="next"><a href="" class="btn btn-default">مرحله بعد</a></li>
+                                </ul>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        gDemos = {
+            init: function () {
+
+                if ($("#form-wizard2").length > 0) {
+                    $('#form-wizard2').bootstrapWizard({
+                        'tabClass': 'form-wizard-levels',
+                        'onNext': function (tab, navigation, index) {
+                            var $valid = $("#wizard-validate").valid();
+                            if (!$valid) {
+                                $validator.focusInvalid();
+                                return false;
+                            }
+                            var $total = navigation.find('li').length;
+                            var $current = index + 1;
+                        },
+                        onTabClick: function (tab, navigation, index) { return false; }
+                    });
+
+                }
+            }
+        }
+        gDemos.init();
+
+    });
+
+    function gDemo() {
+
+        gDemos.init();
+    }
+
+</script>

@@ -23,6 +23,11 @@ app.config(function($routeProvider) {
         templateUrl: "app/views/search.html"
     });
 
+    $routeProvider.when("/addlift", {
+        controller: "addliftController",
+        templateUrl: "app/views/addlift.html"
+    });
+
     $routeProvider.when("/registration", {
         controller: "registrationController",
         templateUrl: "app/views/registration.html"
