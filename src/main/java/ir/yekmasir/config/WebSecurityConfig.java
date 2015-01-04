@@ -12,9 +12,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
-import javax.xml.ws.spi.http.HttpContext;
-import javax.xml.ws.spi.http.HttpHandler;
-
 /**
  * Created with IntelliJ IDEA.
  * User: Emertat
@@ -39,7 +36,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure(WebSecurity web) throws Exception {
         web
                 .ignoring()
-                .antMatchers("/index.html", "/app/app.js", "/app/controller/**", "/app/directives/**", "/app/model/**", "/app/services/**", "/assets/**", "favicon.ico", "/email");
+                .antMatchers("/index2.html", "/app/app.js", "/app/controller/**", "/app/directives/**", "/app/model/**", "/app/services/**", "/assets/**", "favicon.ico", "/email");
     }
 
     @Override
@@ -67,4 +64,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     public UserDetailsService userDetailsService() {
         return new LoginService();
     }
+
+    @Bean
+    public AuthenticationFailureHandler authenticationFailureHandler() {
+        return new ir.yekmasir.service.imp.AuthenticationFailureHandler();
+    }
+
+    @Bean
+    public AuthenticationSuccessHandler authenticationSuccessHandler() {
+        return new ir.yekmasir.service.imp.AuthenticationSuccessHandler();
+    }
+
 }
