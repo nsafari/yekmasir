@@ -36,7 +36,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure(WebSecurity web) throws Exception {
         web
                 .ignoring()
-                .antMatchers("/index2.html", "/app/app.js", "/app/controller/**", "/app/directives/**", "/app/model/**", "/app/services/**", "/assets/**", "favicon.ico", "/email");
+                .antMatchers("/index.html", "/app/app.js", "/app/controller/**", "/app/directives/**", "/app/model/**", "/app/services/**", "/assets/**", "favicon.ico", "/email");
     }
 
     @Override

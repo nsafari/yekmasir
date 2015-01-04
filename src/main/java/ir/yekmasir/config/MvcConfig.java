@@ -23,13 +23,20 @@ import org.springframework.web.servlet.view.UrlBasedViewResolver;
 @Import(WebSecurityConfig.class)
 public class MvcConfig extends WebMvcConfigurerAdapter{
 
-//    @Bean
-//    public InternalResourceViewResolver viewResolver() {
-//        InternalResourceViewResolver  viewResolver = new InternalResourceViewResolver();
-//        viewResolver.setViewClass(InternalResourceView.class);
-//        viewResolver.setPrefix("/");
-//        viewResolver.setSuffix(".html");
-//        return viewResolver;
-//    }
+    @Override
+    public void addViewControllers(ViewControllerRegistry registry) {
+        registry.addViewController("/").setViewName("/index");
+        registry.addViewController("/index").setViewName("/index");
+        registry.addViewController("/login").setViewName("/app/views/login");
+    }
+
+    @Bean
+    public InternalResourceViewResolver viewResolver() {
+        InternalResourceViewResolver  viewResolver = new InternalResourceViewResolver();
+        viewResolver.setViewClass(InternalResourceView.class);
+        viewResolver.setPrefix("/");
+        viewResolver.setSuffix(".html");
+        return viewResolver;
+    }
 
 }
