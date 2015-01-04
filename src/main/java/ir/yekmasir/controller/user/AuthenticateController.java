@@ -1,5 +1,6 @@
 package ir.yekmasir.controller.user;
 
+import ir.yekmasir.exception.DuplicateUserEmail;
 import ir.yekmasir.exception.EnityNotFoundException;
 import ir.yekmasir.exception.UserNotActiveException;
 import ir.yekmasir.model.User;
@@ -7,8 +8,10 @@ import ir.yekmasir.repository.UserRepository;
 import ir.yekmasir.service.SignupConfirmService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletResponse;
 import java.util.Date;
 
 /**
@@ -19,7 +22,7 @@ import java.util.Date;
  * To change this template use File | Settings | File Templates.
  */
 
-@RestController
+@Controller
 @RequestMapping("/user")
 public class AuthenticateController {
 
@@ -30,24 +33,30 @@ public class AuthenticateController {
     private SignupConfirmService signupConfirmService;
 
     @RequestMapping(value = "/registerUser", method = RequestMethod.POST)
-    public String Signup(@RequestBody User user){
+    @ResponseBody
+    public String Signup(@RequestBody User user) throws DuplicateUserEmail {
+        User theUser = userRepository.findByEmail(user.getEmail());
+        if(theUser != null){
+            throw new DuplicateUserEmail("The email is already in used " + user.getEmail());
+        }
+
         user.setSignupDate(new Date());
         user.setUserEnabled(false);
 
         signupConfirmService.startConfirm(user);
 
         userRepository.save(user);
-        return "success";
+        return "{\"result\": \"email is sent successfully\"}";
     }
 
     @RequestMapping(value = "/verifyEmail", method = RequestMethod.GET)
-    public String VerifyEmail(@RequestParam("code") String code){
+    public void VerifyEmail(@RequestParam("code") String code, HttpServletResponse httpServletResponse){
         User user = userRepository.findByEmailConfirmToken(code);
         if(user == null)
-            return "User not found";
+            httpServletResponse.setHeader("Location", "http://localhost/");
 
         signupConfirmService.doConfirm(user);
         userRepository.save(user);
-        return "User enabled";
+        httpServletResponse.setHeader("Location", "http://localhost/#/login");
     }
 }
