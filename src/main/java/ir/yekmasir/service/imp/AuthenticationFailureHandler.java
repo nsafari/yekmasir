@@ -21,5 +21,8 @@ public class AuthenticationFailureHandler extends SimpleUrlAuthenticationFailure
     @Override
     public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response,
                                         AuthenticationException exception) throws IOException, ServletException {
+        response.setStatus(422);
+        response.getWriter().println("{\"result\": \"login failed\"}");
+        response.getWriter().flush();
     }
 }

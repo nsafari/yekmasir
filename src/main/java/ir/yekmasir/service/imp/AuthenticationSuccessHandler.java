@@ -20,7 +20,8 @@ public class AuthenticationSuccessHandler extends SimpleUrlAuthenticationSuccess
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
                                         Authentication authentication) throws IOException, ServletException {
-
+        response.getWriter().println("{\"result\": \"login succeeded\"}");
+        response.getWriter().flush();
     }
 
 }

@@ -10,6 +10,8 @@ function ($scope, $rootScope, $location, User, userService) {
                 .then(function (result) {
                     $rootScope.LogginedUser = result;
                     $location.path('#');
+                }, function(result){
+                    console.log(result.data);
                 });
         }
     };
