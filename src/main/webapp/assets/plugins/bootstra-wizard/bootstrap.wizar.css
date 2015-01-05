@@ -1,4 +1,4 @@
-﻿@charset "UTF-8";
+@charset "UTF-8";
 
 .block
 {
@@ -289,68 +289,3 @@ blockquote.pull-right
 {
     float: right;
 }
-
-
-
-.help-block
-{
-    display: inline-block;
-    color: #AAA;
-    font-size: 12px;
-    margin-left: 5px;
-    margin-bottom: 5px;
-}
-
-.img-rounded
-{
-    -moz-border-radius: 3px;
-    -webkit-border-radius: 3px;
-    border-radius: 3px;
-}
-
-.file input[type="file"]
-{
-    display: none;
-}
-
-.img-thumbnail
-{
-    border: 3px solid rgba(255, 255, 255, 0.3);
-    background: transparent;
-}
-
-.input-group
-{
-    line-height: 28px;
-}
-
-.input-group-addon
-{
-    padding: 8px 10px;
-    border-color: #D5D5D5;
-}
-
-div .form-group:last-child
-{
-    margin-bottom: 0px;
-}
-
-div .form-group:first-child:last-child
-{
-    margin-bottom: 10px;
-}
-
-.block-content .input-group-btn .btn,
-.block-content .btn-group .btn
-{
-    margin-bottom: 0px;
-    padding: 5px 10px 6px;
-}
-
-.focusedInput
-{
-    border-color: #B5B5B5;
-    outline: 0;
-    outline: thin dotted \9;
-}
-
