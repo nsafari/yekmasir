@@ -37,7 +37,7 @@ public class AuthenticateController {
     public String Signup(@RequestBody User user) throws DuplicateUserEmail {
         User theUser = userRepository.findByEmail(user.getEmail());
         if(theUser != null){
-            throw new DuplicateUserEmail("The email is already in used " + user.getEmail());
+            throw new DuplicateUserEmail("This email address is already exists");
         }
 
         user.setSignupDate(new Date());

@@ -7,5 +7,5 @@ package ir.yekmasir.exception;
  * Time: 4:27 PM
  * To change this template use File | Settings | File Templates.
  */
-public class EnityNotFoundException extends Throwable {
+public class EnityNotFoundException extends Exception {
 }
