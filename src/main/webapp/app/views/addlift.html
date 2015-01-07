@@ -21,7 +21,7 @@
                         <li><a href="#valid4" data-toggle="tab"><span>4</span> هزینه و پرداخت</a></li>
                     </ul>
                     <div class="block-content">
-                        <form action="javascript:alert('Form submited');" method="post" id="wizard-validate">
+                        <form action="javascript:alert('Form submited');" method="post" name="addliftform" id="addliftform">
                             <div class="tab-content">
                                 <div class="tab-pane" id="valid1" data-ng-init="lift.OfferRequest=0">
                                     <div class="form-group">
@@ -56,7 +56,6 @@
                                         <label class="control-label ng-binding col-md-2">
                                             <span>تاریخ :</span>&nbsp;&nbsp;
                                         </label>
-
                                         <select id="OneOffDay" data-ng-model="OneOffDay">
                                             <option value="01">01</option>
                                             <option value="02">02</option>
@@ -90,9 +89,7 @@
                                             <option value="30">30</option>
                                             <option value="31">31</option>
                                         </select>
-
                                         <span>/</span>
-
                                         <select id="OneOffMonth" data-ng-model="OneOffMonth">
                                             <option value="01">فروردین</option>
                                             <option value="02">اردیبهشت</option>
@@ -107,9 +104,7 @@
                                             <option value="11">بهمن</option>
                                             <option value="12">اسفند</option>
                                         </select>
-
                                         <span>/</span>
-
                                         <select id="OneOffYear" data-ng-model="OneOffYear">
                                             <option value="1393">1393</option>
                                             <option value="1394">1394</option>
@@ -119,14 +114,14 @@
                                         <label class="control-label ng-binding col-md-2">
                                             <span>ساعت حرکت :</span>
                                         </label>
-                                        <select>
+                                        <select id="DepartureFlexibilityMinute" name="DepartureFlexibilityMinute" data-ng-model="DepartureFlexibilityMinute">
                                             <option value="00">00</option>
                                             <option value="15">15</option>
                                             <option value="30">30</option>
                                             <option value="45">45</option>
                                         </select>
                                         &nbsp;<span> : </span>&nbsp;
-                                        <select>
+                                        <select id="DepartureFlexibilityHour" name="DepartureFlexibilityHour" data-ng-model="DepartureFlexibilityHour">
                                             <option value="00">00</option>
                                             <option value="01">01</option>
                                             <option value="02">02</option>
@@ -157,26 +152,26 @@
                                         <label class="control-label ng-binding col-md-2">
                                             <span>مبدا مسیر :</span>
                                         </label>
-                                        <input type="text" name="Source" data-ng-model="lift.Source" />
+                                        <input type="text" name="Source" id="txtSource" data-ng-model="lift.Source" />
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label ng-binding col-md-2">
                                             <span>مقصد مسیر :</span>
                                         </label>
-                                        <input type="text" name="Destination" data-ng-model="lift.Destination" />
+                                        <input type="text" name="Destination" id="txtDestination" data-ng-model="lift.Destination" />
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label ng-binding col-md-2">
                                             <span>ساعت رسیدن به مقصد :</span>
                                         </label>
-                                        <select>
+                                        <select id="ArrivalTimeMinute" name="ArrivalTimeMinute" data-ng-model="ArrivalTimeMinute">
                                             <option value="00">00</option>
                                             <option value="15">15</option>
                                             <option value="30">30</option>
                                             <option value="45">45</option>
                                         </select>
                                         &nbsp;<span> : </span>&nbsp;
-                                        <select>
+                                        <select id="ArrivalTimeHour" name="ArrivalTimeHour" data-ng-model="ArrivalTimeHour">
                                             <option value="00">00</option>
                                             <option value="01">01</option>
                                             <option value="02">02</option>
@@ -220,13 +215,51 @@
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label ng-binding col-md-2">
+                                            <span>وسایل همراه :</span>
+                                        </label>
+                                        <select data-ng-model="lift.LuggagePerSeat" name="LuggagePerSeat">
+                                            <option value="1">وسایل کوچک (مانند نوت بوک یا کیف دستی)</option>
+                                            <option value="2">وسایل متوسط (وسایلی که میتوانید با خئد حمل نمایید تا سایز (55 x 40 x 20 cm) )</option>
+                                            <option value="3">وسایل بزرگ (مانند چمدان بزرگ یا ساک مسافرتی)</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label ng-binding col-md-2">
                                             <span>توضیحات :</span>
                                         </label>
                                         <textarea class="span6" data-ng-model="lift.Comment" rows="3"></textarea>
                                     </div>
                                 </div>
                                 <div class="tab-pane" id="valid4">
-                                    finish
+                                    <div class="form-group">
+                                        <label class="control-label ng-binding col-md-2">
+                                            <span>هزینه هر نفر :</span>
+                                        </label>
+                                        <select data-ng-model="lift.PricePerSeat" name="PricePerSeat">
+                                            <option value="1000">1000 تومان</option>
+                                            <option value="2000">2000 تومان</option>
+                                            <option value="3000">3000 تومان</option>
+                                            <option value="4000">4000 تومان</option>
+                                            <option value="5000">5000 تومان</option>
+                                            <option value="6000">6000 تومان</option>
+                                            <option value="7000">7000 تومان</option>
+                                            <option value="8000">8000 تومان</option>
+                                            <option value="9000">9000 تومان</option>
+                                            <option value="10000">10000 تومان</option>
+                                            <option value="11000">11000 تومان</option>
+                                            <option value="12000">12000 تومان</option>
+                                            <option value="13000">13000 تومان</option>
+                                            <option value="14000">14000 تومان</option>
+                                            <option value="15000">15000 تومان</option>
+                                            <option value="16000">16000 تومان</option>
+                                            <option value="17000">17000 تومان</option>
+                                            <option value="18000">18000 تومان</option>
+                                            <option value="19000">19000 تومان</option>
+                                            <option value="20000">20000 تومان</option>
+                                        </select>
+                                    </div>
+
+                                    <input type="button" class="btn btn-default" value="ثبت تردد" data-ng-click="addLift()" />
                                 </div>
                                 <ul class="pager wizard">
                                     <li class="previous"><a href="" class="btn btn-default">مرحله قبل</a></li>
@@ -243,6 +276,7 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
+
         gDemos = {
             init: function () {
 
@@ -250,7 +284,7 @@
                     $('#form-wizard2').bootstrapWizard({
                         'tabClass': 'form-wizard-levels',
                         'onNext': function (tab, navigation, index) {
-                            var $valid = $("#wizard-validate").valid();
+                            var $valid = $("#addliftform").valid();
                             if (!$valid) {
                                 $validator.focusInvalid();
                                 return false;
@@ -272,5 +306,341 @@
 
         gDemos.init();
     }
+
+    var availableTags = ['ازگل'
+, 'اقدسیه'
+, 'الهيه'
+, 'امامزاده قاسم'
+, 'اوین'
+, 'باغ فردوس'
+, 'تجریش'
+, 'جماران'
+, 'چیذر'
+, 'دارآباد'
+, 'دربند'
+, 'درکه'
+, 'دزاشیب - جوزستان'
+, 'زعفرانیه'
+, 'سوهانک'
+, 'شهرک نفت'
+, 'شهرک محلاتی'
+, 'فرمانیه'
+, 'قیطریه'
+, 'فرشته'
+, 'کاشانک'
+, 'کامرانیه'
+, 'محمودیه'
+, 'نیاوران'
+, 'ولنجک'
+, 'برق آلستوم'
+, 'تهران ویلا'
+, 'ستارخان'
+, 'سعادت آباد'
+, 'شهرک غرب'
+, 'شهرک مخابرات'
+, 'شهرآرا'
+, 'صادقیه'
+, 'طرشت'
+, 'فرحزاد'
+, 'گیشا'
+, 'همایونشهر'
+, 'مرزداران'
+, 'اختیاریه'
+, 'پاسداران'
+, 'دروس'
+, 'دولت'
+, 'دیباجی'
+, 'جردن - ولیعصر'
+, 'سیدخندان'
+, 'ظفر'
+, 'قلهک'
+, 'میرداماد'
+, 'ونک'
+, 'بلوار پروین'
+, 'تهرانپارس'
+, 'حکیمیه'
+, 'سراج'
+, 'شمس آباد - مجیدیه'
+, 'شمیران نو'
+, 'علم و صنعت'
+, 'فرجام'
+, 'قنات کوثر'
+, 'لویزان - شیان'
+, 'مهران'
+, 'نارمک'
+, 'هروی'
+, 'هنگام'
+, 'آيت الله كاشانی'
+, 'اشرفی اصفهانی'
+, 'باغ فیض'
+, 'بلوار فردوس'
+, 'پونک'
+, 'جنت آباد'
+, 'حصارک'
+, 'سازمان برنامه'
+, 'شاهین'
+, 'شهران'
+, 'شهرزيبا'
+, 'شهرک آپادانا'
+, 'شهرک اکباتان'
+, 'شهرک اندیشه'
+, 'شهرک پرواز'
+, 'شهرک کوهسار'
+, 'شهرک نفت'
+, 'شهرک والفجر'
+, 'کن'
+, 'کوی ارم'
+, 'کوی بیمه'
+, 'آرژانتین - ساعی'
+, 'امیرآباد'
+, 'ایرانشهر'
+, 'بهجت آباد'
+, 'پارک لاله'
+, 'جنت - رفتگر'
+, 'دانشگاه تهران'
+, 'شریعتی'
+, 'شیراز'
+, 'عباس آباد'
+, 'فاطمی'
+, 'قائم مقام - سنائی'
+, 'قزل قلعه'
+, 'کشاورز غربی'
+, 'گاندی'
+, 'میدان جهاد'
+, 'میدان ولیعصر'
+, 'نصرت'
+, 'یوسف آباد'
+, 'اجاره دار'
+, 'ارامنه'
+, 'امجدیه - خاقانی'
+, 'باغ صبا - سهروردی'
+, 'بهار'
+, 'حشمتیه'
+, 'خواجه نصیر - حقوقی'
+, 'دبستان - مجیدیه'
+, 'سبلان'
+, 'عباس آباد - اندیشه'
+, 'قصر'
+, 'کاج'
+, 'کریمخان'
+, 'مطهری'
+, 'نامجو'
+, 'نظام آباد'
+, 'نیلوفر - شهید قندی'
+, 'هفت تیر'
+, 'تسلیحات'
+, 'تهرانپارس'
+, 'دردشت'
+, 'زرکش'
+, 'فدک'
+, 'کرمان'
+, 'لشکر'
+, 'مجیدیه جنوبی'
+, 'مدائن'
+, 'نارمک'
+, 'وحیدیه'
+, 'هفت حوض'
+, 'استاد معین'
+, 'امامزاده عبدالله'
+, 'دکتر هوشیار'
+, 'سرآسیاب مهرآباد'
+, 'شمشیری'
+, 'شهید دستغیب'
+, 'فتح - صنعتی'
+, 'فرودگاه'
+, 'بریانک'
+, 'جی – شبیری'
+, 'جیحون'
+, 'دامپزشكی'
+, 'رودکی'
+, 'زنجان'
+, 'سلیمانی - تیموری'
+, 'کارون'
+, 'قزوین'
+, 'کمیل'
+, 'مالک اشتر'
+, 'نواب صفوی'
+, 'هاشمی'
+, 'هفت چنار'
+, 'آذربایجان'
+, 'آگاهی'
+, 'اسکندری'
+, 'امیریه'
+, 'انبارنفت'
+, 'جمالزاده - حشمت الدوله'
+, 'جمهوری'
+, 'خرمشهر'
+, 'راه آهن'
+, 'شیخ هادی'
+, 'عباسی'
+, 'فروزش - امیربهادر'
+, 'فلسطین - انقلاب'
+, 'قلمستان - برادران جوادیان'
+, 'مخصوص'
+, 'منیریه'
+, 'میدان حر'
+, 'هلال احمر'
+, 'آبشار'
+, 'ارگ پامنار'
+, 'امامزاده یحیی'
+, 'ایران'
+, 'بازار'
+, 'بهارستان'
+, 'تختی'
+, 'دروازه شمیران'
+, 'سنگلج'
+, 'شهید هرندی'
+, 'فردوسی'
+, 'قیام'
+, 'کوثر'
+, 'آشتیانی'
+, 'امامت'
+, 'پیروزی'
+, 'تهران نو'
+, 'حافظیه'
+, 'دهقان'
+, 'زاهد گیلانی'
+, 'زینبیه'
+, 'سرخه حصار'
+, 'شورا'
+, 'شهید اسدی'
+, 'صفا'
+, 'قاسم آباد'
+, 'نیروی هوایی'
+, '13 آبان'
+, 'آهنگ'
+, 'آهنگران'
+, 'ابوذر'
+, 'بروجردی'
+, 'پرستار'
+, 'پیروزی'
+, 'تاکسیرانی'
+, 'جابری'
+, 'جوادیه'
+, 'چهارصد دستگاه'
+, 'خاوران'
+, 'دژکام'
+, 'دولاب'
+, 'شاهین'
+, 'شکوفه'
+, 'شکیب'
+, 'شیوا'
+, 'صد دستگاه'
+, 'فرزانه'
+, 'قصر فیروزه'
+, 'مینای'
+, 'نبی اکرم'
+, 'نیکنام'
+, 'ابوذر'
+, 'اتابک'
+, 'اسلام آباد - والفجر'
+, 'افسریه'
+, 'بروجردی - دهقان'
+, 'شوش'
+, 'شهرک رضویه'
+, 'طیب'
+, 'کیانشهر'
+, 'مسعودیه'
+, 'مشیریه'
+, 'مطهری'
+, 'مظاهری'
+, 'مینایی'
+, 'ولیعصر - بی سیم'
+, 'هاشم آباد'
+, 'باغ آذری'
+, 'تختی'
+, 'جوادیه'
+, 'خزانه'
+, 'شهرک بعثت'
+, 'علی آباد'
+, 'نازی آباد'
+, 'یاخچی آباد'
+, 'آذری'
+, 'ابوذر'
+, 'امامزاده حسن'
+, 'باغ خزانه'
+, 'بلور سازی'
+, 'جلیلی'
+, 'زمزم'
+, 'زهتابی'
+, 'فلاح'
+, 'گلچین'
+, 'مقدم'
+, 'وصفنارد'
+, 'یافت آباد'
+, '17 شهریور'
+, 'بهداشت'
+, 'تولید دارو'
+, 'حسینی - فردوس'
+, 'خلیج فارس'
+, 'شاد آباد'
+, 'شمس آباد'
+, 'شهرک امام خمینی'
+, 'شهید رجایی'
+, 'صاحب الزمان'
+, 'صادقیه'
+, 'ولیعصر'
+, 'یافت آباد'
+, 'اسفندیاری و بستان'
+, 'اسماعیل آباد'
+, 'بوستان ولایت'
+, 'بهمنیار'
+, 'خانی آباد'
+, 'دولتخواه'
+, 'شریعتی'
+, 'شکوفه'
+, 'شهرک رسالت'
+, 'شهید کاظمی'
+, 'نعمت آباد'
+, '13 آبان'
+, 'ابن بابویه'
+, 'استخر'
+, 'اقدسیه'
+, 'باروت کوبی'
+, 'تقی آباد'
+, 'جوانمرد قصاب'
+, 'حمزه آباد'
+, 'دولت آباد'
+, 'دیلمان'
+, 'سرتخت'
+, 'شهادت'
+, 'شهید بهشتی'
+, 'عباس آباد'
+, 'علایین'
+, 'فیروزآبادی'
+, 'حمزه آباد'
+, 'منصوریه منگل'
+, 'ولی آباد'
+, 'هاشم آباد'
+, 'باشگاه نفت'
+, 'تهرانسر'
+, 'چیتگر'
+, 'شهرک آزادی'
+, 'شهرک استقلال'
+, 'شهرک پاسداران'
+, 'شهرک دانشگاه تهران'
+, 'شهرک دریا'
+, 'شهرک شهرداری'
+, 'شهرک غزالی'
+, 'شهرک فرهنگیان'
+, 'وردآورد'
+, 'ویلا شهر'
+, 'آزاد شهر - پیکان شهر'
+, 'دهکده المپیک'
+, 'زیبا دشت'
+, 'شهرک دژبان'
+, 'شهرک راه آهن'
+, 'شهرک شهید باقری'
+, 'شهرک صنعتی شریف'
+, 'همت غرب'];
+
+    $("#txtSource").autocomplete({
+        source: availableTags
+    });
+
+    $("#txtDestination").autocomplete({
+        source: availableTags
+    });
+
 
 </script>

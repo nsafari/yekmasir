@@ -1,4 +1,4 @@
-﻿'use strict';
+'use strict';
 app.factory('Lift', function () {
     var Lift = function (data) {
         angular.extend(this, {
@@ -8,8 +8,9 @@ app.factory('Lift', function () {
             DepartureFlexibility: null,
             Source: null,
             Destination: null,
+            ArrivalTime: null,
             Places: null,
-            Luggage: null,
+            LuggagePerSeat: null,
             Vehicle: null,
             Smoker: null,
             Comment: null,
