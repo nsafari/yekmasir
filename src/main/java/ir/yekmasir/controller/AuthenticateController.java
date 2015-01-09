@@ -1,4 +1,4 @@
-package ir.yekmasir.controller.user;
+package ir.yekmasir.controller;
 
 import ir.yekmasir.exception.DuplicateUserEmail;
 import ir.yekmasir.exception.EnityNotFoundException;
