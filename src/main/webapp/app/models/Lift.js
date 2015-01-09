@@ -2,20 +2,20 @@
 app.factory('Lift', function () {
     var Lift = function (data) {
         angular.extend(this, {
-            OfferRequest: null,
-            Frequency: null,
-            ShamsiDate: null,
-            DepartureFlexibility: null,
-            Source: null,
-            Destination: null,
-            ArrivalTime: null,
-            Places: null,
-            LuggagePerSeat: null,
-            Vehicle: null,
-            Smoker: null,
-            Comment: null,
-            PricePerSeat: null,
-            Payment: null
+            offerRequest: null,
+            frequency: null,
+            shamsiDate: null,
+            departureFlexibility: null,
+            source: null,
+            destination: null,
+            arrivalTime: null,
+            places: null,
+            luggagePerSeat: null,
+            vehicle: null,
+            smoker: null,
+            comment: null,
+            pricePerSeat: null,
+            payment: null
         });
         angular.extend(this, data);
     };

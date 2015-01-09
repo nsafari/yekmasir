@@ -7,7 +7,7 @@
     };
 
     this.AddLift = function (lift) {
-        return $http.post(serviceBase + '/lift/AddLift', lift);
+        return $http.post(serviceBase + '/lift/addLift', lift);
     }
 
 }]);

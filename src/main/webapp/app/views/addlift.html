@@ -23,30 +23,30 @@
                     <div class="block-content">
                         <form action="javascript:alert('Form submited');" method="post" name="addliftform" id="addliftform">
                             <div class="tab-content">
-                                <div class="tab-pane" id="valid1" data-ng-init="lift.OfferRequest=0">
+                                <div class="tab-pane" id="valid1" data-ng-init="lift.offerRequest=0">
                                     <div class="form-group">
                                         <label class="control-label ng-binding">
-                                            <input type="radio" name="offerrequest" value="0" data-ng-model="lift.OfferRequest"
+                                            <input type="radio" name="offerrequest" value="0" data-ng-model="lift.offerRequest"
                                                    aria-label="Radio button for following text input">&nbsp;&nbsp;<span>پیشنهاد تردد (شما یک راننده هستید)  </span>
                                         </label>
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label ng-binding">
-                                            <input type="radio" name="offerrequest" value="1" data-ng-model="lift.OfferRequest"
+                                            <input type="radio" name="offerrequest" value="1" data-ng-model="lift.offerRequest"
                                                    aria-label="Radio button for following text input">&nbsp;&nbsp;<span>درخواست تردد (شما یک مسافر هستید)  </span>
                                         </label>
                                     </div>
                                 </div>
-                                <div class="tab-pane" id="valid2" data-ng-init="lift.Frequency=0">
+                                <div class="tab-pane" id="valid2" data-ng-init="lift.frequency=0">
                                     <div class="form-group">
                                         <label class="control-label ng-binding">
-                                            <input type="radio" name="frequency" value="0" data-ng-model="lift.Frequency"
+                                            <input type="radio" name="frequency" value="0" data-ng-model="lift.frequency"
                                                    aria-label="Radio button for following text input">&nbsp;&nbsp;<span>یکبار تردد</span>&nbsp;<span>(شما قصد تردد در یک تاریخ خاص برای یکبار دارید)</span>
                                         </label>
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label ng-binding">
-                                            <input type="radio" name="frequency" value="1" data-ng-model="lift.Frequency"
+                                            <input type="radio" name="frequency" value="1" data-ng-model="lift.frequency"
                                                    aria-label="Radio button for following text input">&nbsp;&nbsp;<span>تردد منظم</span>&nbsp;<span>(شما قصد تردد در یک دوره تاریخ بصورت منظم دارید)</span>
                                         </label>
                                     </div>
@@ -114,14 +114,14 @@
                                         <label class="control-label ng-binding col-md-2">
                                             <span>ساعت حرکت :</span>
                                         </label>
-                                        <select id="DepartureFlexibilityMinute" name="DepartureFlexibilityMinute" data-ng-model="DepartureFlexibilityMinute">
+                                        <select id="DepartureFlexibilityMinute" name="DepartureFlexibilityMinute" data-ng-model="departureFlexibilityMinute">
                                             <option value="00">00</option>
                                             <option value="15">15</option>
                                             <option value="30">30</option>
                                             <option value="45">45</option>
                                         </select>
                                         &nbsp;<span> : </span>&nbsp;
-                                        <select id="DepartureFlexibilityHour" name="DepartureFlexibilityHour" data-ng-model="DepartureFlexibilityHour">
+                                        <select id="DepartureFlexibilityHour" name="DepartureFlexibilityHour" data-ng-model="departureFlexibilityHour">
                                             <option value="00">00</option>
                                             <option value="01">01</option>
                                             <option value="02">02</option>
@@ -152,26 +152,26 @@
                                         <label class="control-label ng-binding col-md-2">
                                             <span>مبدا مسیر :</span>
                                         </label>
-                                        <input type="text" name="Source" id="txtSource" data-ng-model="lift.Source" />
+                                        <input type="text" name="Source" id="txtSource" data-ng-model="lift.source" />
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label ng-binding col-md-2">
                                             <span>مقصد مسیر :</span>
                                         </label>
-                                        <input type="text" name="Destination" id="txtDestination" data-ng-model="lift.Destination" />
+                                        <input type="text" name="Destination" id="txtDestination" data-ng-model="lift.destination" />
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label ng-binding col-md-2">
                                             <span>ساعت رسیدن به مقصد :</span>
                                         </label>
-                                        <select id="ArrivalTimeMinute" name="ArrivalTimeMinute" data-ng-model="ArrivalTimeMinute">
+                                        <select id="ArrivalTimeMinute" name="ArrivalTimeMinute" data-ng-model="arrivalTimeMinute">
                                             <option value="00">00</option>
                                             <option value="15">15</option>
                                             <option value="30">30</option>
                                             <option value="45">45</option>
                                         </select>
                                         &nbsp;<span> : </span>&nbsp;
-                                        <select id="ArrivalTimeHour" name="ArrivalTimeHour" data-ng-model="ArrivalTimeHour">
+                                        <select id="ArrivalTimeHour" name="ArrivalTimeHour" data-ng-model="arrivalTimeHour">
                                             <option value="00">00</option>
                                             <option value="01">01</option>
                                             <option value="02">02</option>
@@ -202,7 +202,7 @@
                                         <label class="control-label ng-binding col-md-2">
                                             <span>تعداد جاهای موجود :</span>
                                         </label>
-                                        <select data-ng-model="lift.Places" name="Places">
+                                        <select data-ng-model="lift.places" name="Places">
                                             <option value="1">1</option>
                                             <option value="2">2</option>
                                             <option value="3">3</option>
@@ -217,7 +217,7 @@
                                         <label class="control-label ng-binding col-md-2">
                                             <span>وسایل همراه :</span>
                                         </label>
-                                        <select data-ng-model="lift.LuggagePerSeat" name="LuggagePerSeat">
+                                        <select data-ng-model="lift.luggagePerSeat" name="LuggagePerSeat">
                                             <option value="1">وسایل کوچک (مانند نوت بوک یا کیف دستی)</option>
                                             <option value="2">وسایل متوسط (وسایلی که میتوانید با خئد حمل نمایید تا سایز (55 x 40 x 20 cm) )</option>
                                             <option value="3">وسایل بزرگ (مانند چمدان بزرگ یا ساک مسافرتی)</option>
@@ -227,7 +227,7 @@
                                         <label class="control-label ng-binding col-md-2">
                                             <span>توضیحات :</span>
                                         </label>
-                                        <textarea class="span6" data-ng-model="lift.Comment" rows="3"></textarea>
+                                        <textarea class="span6" data-ng-model="lift.comment" rows="3"></textarea>
                                     </div>
                                 </div>
                                 <div class="tab-pane" id="valid4">
@@ -235,7 +235,7 @@
                                         <label class="control-label ng-binding col-md-2">
                                             <span>هزینه هر نفر :</span>
                                         </label>
-                                        <select data-ng-model="lift.PricePerSeat" name="PricePerSeat">
+                                        <select data-ng-model="lift.pricePerSeat" name="PricePerSeat">
                                             <option value="1000">1000 تومان</option>
                                             <option value="2000">2000 تومان</option>
                                             <option value="3000">3000 تومان</option>

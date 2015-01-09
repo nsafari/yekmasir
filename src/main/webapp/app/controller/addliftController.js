@@ -17,9 +17,9 @@ function ($scope, $rootScope, $location, Lift, liftService) {
     $scope.addLift = function () {
         if (!$scope.addliftform.$invalid) {
 
-            $scope.lift.ShamsiDate = $scope.OneOffYear + $scope.OneOffMonth + $scope.OneOffDay;
-            $scope.lift.DepartureFlexibility = $scope.DepartureFlexibilityHour + $scope.DepartureFlexibilityMinute;
-            $scope.lift.ArrivalTime = $scope.ArrivalTimeHour + $scope.ArrivalTimeMinute;
+            $scope.lift.shamsiDate = $scope.OneOffYear + $scope.OneOffMonth + $scope.OneOffDay;
+            $scope.lift.departureFlexibility = $scope.DepartureFlexibilityHour + $scope.DepartureFlexibilityMinute;
+            $scope.lift.arrivalTime = $scope.ArrivalTimeHour + $scope.ArrivalTimeMinute;
 
             liftService.AddLift($scope.lift)
                 .then(function (result) {

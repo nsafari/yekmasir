@@ -8,6 +8,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.annotation.web.servlet.configuration.EnableWebMvcSecurity;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
@@ -36,19 +37,18 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure(WebSecurity web) throws Exception {
         web
                 .ignoring()
-                .antMatchers("/index.html", "/app/app.js", "/app/controller/**", "/app/directives/**", "/app/model/**", "/app/services/**", "/assets/**", "favicon.ico", "/email");
+                .antMatchers("/app/controller/**", "/app/directives/**", "/app/model/**", "/app/services/**", "/assets/**", "favicon.ico", "/email");
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-
         http.userDetailsService(userDetailsService)
                 .csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/user/**").permitAll()
-                //.antMatchers("/app/**").permitAll()
-                .antMatchers("/app/views/search.html").hasAnyRole()
-                .antMatchers("/app/views/addlift.html").hasAnyRole()
+                .antMatchers("/", "/index.html", "/app/app.js").permitAll()
+                .antMatchers("/app/views/search.html").hasRole("USER")
+                .antMatchers("/app/views/addlift.html").hasRole("USER")
+                .antMatchers("/lift/**").hasRole("USER")
                 .and()
                 .formLogin()
                 .loginPage("/login")
@@ -57,7 +57,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .loginProcessingUrl("/user/login")
                 .successHandler(authenticationSuccessHandler)
                 .failureHandler(authenticationFailureHandler)
-                .permitAll();
+                .permitAll()
+                .and()
+                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.NEVER);
+
 
     }
 
