@@ -1,6 +1,6 @@
 ﻿'use strict';
-app.controller('loginController', ['$scope', '$rootScope', '$location', 'User', 'userService',
-function ($scope, $rootScope, $location, User, userService) {
+app.controller('loginController', ['$scope', '$rootScope', '$window', '$location', 'User', 'userService',
+function ($scope, $rootScope, $window, $location, User, userService) {
 
     $scope.user = new User();
 
@@ -9,7 +9,12 @@ function ($scope, $rootScope, $location, User, userService) {
             userService.Login($scope.user)
                 .then(function (result) {
                     $rootScope.LogginedUser = result;
-                    $location.path('#');
+                    if($location.path() === "/login"){
+                        $location.path('#');
+                    }else{
+                        $window.location.reload();
+                    }
+
                 }, function(result){
                     console.log(result.data);
                 });

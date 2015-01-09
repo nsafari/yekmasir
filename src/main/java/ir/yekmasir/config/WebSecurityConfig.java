@@ -57,9 +57,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .loginProcessingUrl("/user/login")
                 .successHandler(authenticationSuccessHandler)
                 .failureHandler(authenticationFailureHandler)
-                .permitAll()
-                .and()
-                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.NEVER);
+                .permitAll();
 
 
     }
