@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.Date;
 
 /**
@@ -50,13 +51,13 @@ public class AuthenticateController {
     }
 
     @RequestMapping(value = "/verifyEmail", method = RequestMethod.GET)
-    public void VerifyEmail(@RequestParam("code") String code, HttpServletResponse httpServletResponse){
+    public void VerifyEmail(@RequestParam("code") String code, HttpServletResponse httpServletResponse) throws IOException {
         User user = userRepository.findByEmailConfirmToken(code);
         if(user == null)
-            httpServletResponse.setHeader("Location", "http://localhost/");
+            httpServletResponse.sendRedirect("http://yekmasir.com/");
 
         signupConfirmService.doConfirm(user);
         userRepository.save(user);
-        httpServletResponse.setHeader("Location", "http://localhost/#/login");
+        httpServletResponse.sendRedirect("http://yekmasir.com/#/login");
     }
 }

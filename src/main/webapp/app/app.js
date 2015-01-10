@@ -36,7 +36,9 @@ app.config(function($routeProvider) {
     $routeProvider.otherwise({ redirectTo: "/home" });
 });
 
-app.constant('webAPISetting', {
-    apiServiceBaseUri: 'http://yekmasir.com/',
-    clientId: 'webAPISetting'
-});
+app.factory('webAPISetting', ['$location', function($location){
+    return {
+        apiServiceBaseUri: $location.protocol() + '://'+ $location.host(),
+        clientId: 'webAPISetting'
+    }
+}]);

@@ -103,7 +103,6 @@ public class User implements Serializable, UserDetails
     }
 
     @Override
-    @JsonIgnore
     public String getPassword() {
         return password;
     }
