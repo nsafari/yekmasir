@@ -111,7 +111,7 @@ public class SignupConfirmEmail implements SignupConfirmService {
                     new InternetAddress(email));
 
             // Set Subject: header field
-            message.setSubject("تایید مشخصات کاربری");
+            message.setSubject("تایید مشخصات کاربری", "UTF-8");
 
             // Send the actual HTML message, as big as you like
             message.setContent(getaHtmlMessage(emailConfirmToken), "text/html;charset=utf-8");
